@@ -1,0 +1,12 @@
+package com.Scanner;
+
+public class Scanner {
+
+
+	public void EmployeeInfo() {
+		Scanner sc=new Scanner(system.in);
+		int id=sc.nextLine();
+		
+	}
+
+}

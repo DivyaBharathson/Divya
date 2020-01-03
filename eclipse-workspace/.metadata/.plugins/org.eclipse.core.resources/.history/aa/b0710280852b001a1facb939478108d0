@@ -1,0 +1,15 @@
+@fb
+Feature: Facebook application automation script
+
+Background: User launch the application
+Given User launch the facebook application
+
+  Scenario: Verify the user username
+    And User enter the "sai prasanth" in the username feild
+    
+
+  @tc2
+  Scenario: Verify the user enter password
+    And User enter the "2345678" in the password feild
+    
+

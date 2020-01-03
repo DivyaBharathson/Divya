@@ -1,0 +1,48 @@
+package com.cucumber.stepdefinition;
+
+import org.openqa.selenium.WebDriver;
+
+import com.cucumber.baseclass.SeleniumBaseClass;
+import com.cucumber.pom.FacebookLoginPOM;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class Stepdefinition extends SeleniumBaseClass {
+	
+	public static WebDriver driver;
+
+	@Given("^User launch the facebook application$")
+	public void user_launch_the_facebook_application() throws Throwable {
+			browserLaunch("chrome");
+			getUrl("https://www.facebook.com");
+	}
+
+	@When("^User enter the username in the username feild$")
+	public void user_enter_the_username_in_the_username_feild() throws Throwable {
+		FacebookLoginPOM fb = new FacebookLoginPOM();
+		inputValuesInElement(fb.getEmail(), "test@gmail.com");
+	}
+
+	@When("^User enter the password in the password feild$")
+	public void user_enter_the_password_in_the_password_feild() throws Throwable {
+
+	}
+
+	@When("^User click on the login button$")
+	public void user_click_on_the_login_button() throws Throwable {
+
+	}
+
+	@Then("^User validate the username present in the header$")
+	public void user_validate_the_username_present_in_the_header() throws Throwable {
+
+	}
+
+	@Then("^User close the browser$")
+	public void user_close_the_browser() throws Throwable {
+
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.cucumber.pom;
+
+import com.cucumber.baseclass.SeleniumBaseClass;
+
+public class AdactinHomePagePom extends SeleniumBaseClass {
+	
+	
+
+}

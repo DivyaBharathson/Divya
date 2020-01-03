@@ -1,0 +1,15 @@
+Feature: Adactin Tasks
+
+Scenario: Login
+
+
+Given User launch Adactin web page
+When User enter email id in username field
+And User enter password in password field
+And User click login button
+Then Check if correctly logged in webpage
+Then User close the browser
+
+
+
+

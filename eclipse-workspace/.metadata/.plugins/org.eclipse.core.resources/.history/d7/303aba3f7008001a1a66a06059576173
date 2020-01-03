@@ -1,0 +1,9 @@
+package org.all;
+
+public class Languageclass {
+
+	public Languageclass() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

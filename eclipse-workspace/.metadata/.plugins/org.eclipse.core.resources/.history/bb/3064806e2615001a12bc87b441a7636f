@@ -1,0 +1,18 @@
+package com.POM;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Amazon5MobilesPage3POM extends SeleniumBaseClass {
+
+	@FindBy (id="submit.add-to-cart")
+	private WebElement addToCart2;
+	
+	@FindBy (xpath="class=\"currencyINRFallback\"")
+	private WebElement amtPayable2; 
+	
+	public Amazon5MobilesPage3POM() {
+		PageFactory.initElements(driver,this);
+	}
+}

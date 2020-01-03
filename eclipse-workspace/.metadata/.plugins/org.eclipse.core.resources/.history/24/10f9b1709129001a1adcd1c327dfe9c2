@@ -1,0 +1,85 @@
+package com.maven.MavenPractise;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.poi.hssf.record.RightMarginRecord;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+public class FlipkartTestNG extends SeleniumBaseClass {
+
+	@BeforeSuite
+	public void beforeSuite() throws Throwable {
+
+		browserLaunch("chrome");
+		
+	}
+	
+	
+	@Test(enabled=false)
+	public void testCase() throws Throwable {
+		
+		getUrl("https://www.flipkart.com/");
+		WebElement close = driver.findElement(By.xpath("//button[@class='_2AkmmA _29YdH8']"));
+		clickOnTheElement(close);
+
+		WebElement emptySpace = driver.findElement(By.xpath("(//div[@class='_1S7OK2'])[1]"));
+		
+		List<WebElement> menus = driver.findElements(By.xpath("//span[@class='_1QZ6fC _3Lgyp8']"));
+		
+		for (WebElement singleMenu : menus) {
+
+			System.out.println(singleMenu.getText());
+			
+			mouseOver(singleMenu);
+			
+			List<WebElement> subMenus = driver.findElements(By.xpath("(//li[@class='_1KCOnI _2BfSTw _1h5QLb _3ZgIXy'])"));
+			
+			for (WebElement singleSubMenu : subMenus) {
+
+				mouseOver(singleMenu);
+
+				System.out.println("------"+singleSubMenu.getText());
+
+				clickOnTheElement(emptySpace);
+
+			}
+		}
+		driver.close();
+
+	}
+	
+	@Test
+	public void testCase1() throws Throwable {
+		
+		getUrl("https://www.amazon.in/");
+		clickOnTheElement(driver.findElement(By.xpath("//i[@class='hm-icon nav-sprite']")));
+		clickOnTheElement(driver.findElement(By.xpath("//div[contains(text(),'TV, Appliances, Electronics')]")));
+		List<WebElement> electronicsMenu = driver.findElements(By.xpath("//div[@class='hmenu-item hmenu-title']"));
+		for (WebElement subElectronicsMenu : electronicsMenu) {
+			
+			clickOnTheElement(subElectronicsMenu);
+			rightClickOnElement(driver.findElement(By.xpath("(//img[@role='img'])[1]")));
+			keyboardMoveOneDown();
+			driver.switchTo().window("1");
+			WebElement title = driver.findElement(By.xpath("//h1[@id='title']"));
+			System.out.println(title.getText());
+			
+			
+			
+		}
+		driver.close();
+	}
+
+	@AfterSuite
+	private void afterSuite() {
+		driver.quit();
+
+	}
+}

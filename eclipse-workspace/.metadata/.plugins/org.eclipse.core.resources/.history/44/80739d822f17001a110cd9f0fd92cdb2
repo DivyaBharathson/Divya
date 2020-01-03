@@ -1,0 +1,11 @@
+package com.selenium.pom;
+
+import org.openqa.selenium.WebElement;
+
+public class AutomationSiteProductPurchasePagePOM {
+
+	@FindBy (id="email_create")
+	private WebElement emailToCreateAccount;
+	
+	
+}

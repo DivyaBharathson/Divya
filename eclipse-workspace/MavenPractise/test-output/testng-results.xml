@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" ignored="1" total="2" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="34746" started-at="2019-12-30T08:34:28 IST" finished-at="2019-12-30T08:35:03 IST">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="34746" started-at="2019-12-30T08:34:28 IST" finished-at="2019-12-30T08:35:03 IST">
+      <class name="com.maven.MavenPractise.FlipkartTestNG">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:com.maven.MavenPractise.FlipkartTestNG@9660f4e]" name="beforeSuite" is-config="true" duration-ms="11693" started-at="2019-12-30T08:34:17 IST" finished-at="2019-12-30T08:34:28 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="FAIL" signature="testCase1()[pri:0, instance:com.maven.MavenPractise.FlipkartTestNG@9660f4e]" name="testCase1" duration-ms="34667" started-at="2019-12-30T08:34:29 IST" finished-at="2019-12-30T08:35:03 IST">
+          <exception class="java.lang.Exception">
+            <full-stacktrace>
+              <![CDATA[java.lang.Exception
+at com.maven.MavenPractise.SeleniumBaseClass.waitForElementVisiblity(SeleniumBaseClass.java:123)
+at com.maven.MavenPractise.FlipkartTestNG.testCase1(FlipkartTestNG.java:104)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:770)
+at org.testng.TestRunner.run(TestRunner.java:591)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+at org.testng.TestNG.runSuites(TestNG.java:1032)
+at org.testng.TestNG.run(TestNG.java:1000)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Exception -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase1 -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.maven.MavenPractise.FlipkartTestNG@9660f4e]" name="afterSuite" is-config="true" duration-ms="1341" started-at="2019-12-30T08:35:03 IST" finished-at="2019-12-30T08:35:05 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- com.maven.MavenPractise.FlipkartTestNG -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

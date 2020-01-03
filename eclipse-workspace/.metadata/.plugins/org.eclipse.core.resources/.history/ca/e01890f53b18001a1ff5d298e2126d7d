@@ -1,0 +1,140 @@
+package com.selenium.pom;
+
+public class AutomationSiteTask1Script extends SeleniumBaseClass{
+
+	public static void main(String[] args) throws Throwable {
+		
+		browserLaunch("chrome");
+		getUrl("http://automationpractice.com/index.php");
+		
+		AutomationSiteHomePagePOM home=new AutomationSiteHomePagePOM();
+		AutomationSiteProductListPagePOM prodList =new AutomationSiteProductListPagePOM();
+		AutomationSiteProductPurchasePagePOM prodPurchase=new AutomationSiteProductPurchasePagePOM();
+		AutomationSiteContactUsPagePOM contact=new AutomationSiteContactUsPagePOM();
+		//Task 1
+		clickOnTheElement(home.getSignIn());
+		inputValuesInElement(prodPurchase.getEmailToSignIn(),"divya.madvem@gmail.com");
+		inputValuesInElement(prodPurchase.getPassToSignIn(), "qwerty");
+		clickOnTheElement(prodPurchase.getSignIn());
+		
+		
+		inputValuesInElement(home.getSearch(), "blouses");
+		clickOnTheElement(home.getSearchButton());
+		
+		waitForElementVisiblity(prodList.getAddToCart());
+		clickOnTheElement(prodList.getAddToCart());
+		
+		waitForElementVisiblity(prodList.getTextToValidateIfAddedToCart());
+		
+		String textFromElement =(GetttingTextFromElement(prodList.getTextToValidateIfAddedToCart()));
+		
+			if (textFromElement.contains("item")) {
+				System.out.println("1st Item added to cart");
+			}
+			else {
+			System.out.println("1st item couldnt be added to cart");
+		}
+//		takeScreenShot("Items in cart in 1st Task");
+		clickOnTheElement(prodList.getProceedToCheckOut());
+		scrollUsingCoordinates(500, 500);
+		clickOnTheElement(prodPurchase.getToCheckOut());
+		
+		scrollUsingCoordinates(500, 500);
+		
+		waitForElementVisiblity(prodPurchase.getTocheckAddress());
+		clickOnTheElement(prodPurchase.getToCheckOut());
+		scrollUsingCoordinates(500, 400);
+
+		if (prodPurchase.getAgreeTermsAndConditions().isEnabled()) {
+			clickOnTheElement(prodPurchase.getAgreeTermsAndConditions());
+		}else {
+			System.out.println("Couldnt agree to terms and conditions");
+		}
+		
+		clickOnTheElement(prodPurchase.getFinalCheckout());
+		
+
+		scrollUsingCoordinates(500, 400);
+		clickOnTheElement(prodPurchase.getPayByWire());
+		
+		clickOnTheElement(prodPurchase.getPlaceOrder());
+		
+		clickOnTheElement(prodPurchase.getSignOut());
+		
+		//task 2
+		
+		clickOnTheElement(home.getSignIn());
+		inputValuesInElement(prodPurchase.getEmailToSignIn(),"divya.madvem@gmail.com");
+		inputValuesInElement(prodPurchase.getPassToSignIn(), "qwerty");
+		clickOnTheElement(prodPurchase.getSignIn());
+		
+		mouseOver(home.getWomenMenu());
+		clickOnTheElement(home.getBlousesSubMenu());
+		waitForElementVisiblity(prodList.getAddToCart());
+		clickOnTheElement(prodList.getAddToCart());
+		
+waitForElementVisiblity(prodList.getTextToValidateIfAddedToCart());
+		
+		String textFromElement1 =(GetttingTextFromElement(prodList.getTextToValidateIfAddedToCart()));
+		
+			if (textFromElement1.contains("item")) {
+				System.out.println("2nd Item added to cart");
+			}
+			else {
+			System.out.println("2nd item couldnt be added to cart");
+		}
+		takeScreenShot("Items in cart in 2nd task");
+		clickOnTheElement(prodPurchase.getToCheckOut());
+		scrollUsingCoordinates(500, 500);
+		clickOnTheElement(prodPurchase.getToCheckOut());
+		
+		scrollUsingCoordinates(500, 500);
+		
+		waitForElementVisiblity(prodPurchase.getTocheckAddress());
+		clickOnTheElement(prodPurchase.getToCheckOut());
+		scrollUsingCoordinates(500, 400);
+
+		if (prodPurchase.getAgreeTermsAndConditions().isEnabled()) {
+			clickOnTheElement(prodPurchase.getAgreeTermsAndConditions());
+		}else {
+			System.out.println("Couldnt agree to terms and conditions");
+		}
+		
+		clickOnTheElement(prodPurchase.getFinalCheckout());
+		
+		scrollUsingCoordinates(500, 400);
+		clickOnTheElement(prodPurchase.getPayByWire());
+		
+		clickOnTheElement(prodPurchase.getPlaceOrder());
+		
+		clickOnTheElement(prodPurchase.getSignOut());
+		
+		//Task 3
+		
+		clickOnTheElement(home.getSignIn());
+		inputValuesInElement(prodPurchase.getEmailToSignIn(),"divya.madvem@gmail.com");
+		inputValuesInElement(prodPurchase.getPassToSignIn(), "qwerty");
+		clickOnTheElement(prodPurchase.getSignIn());
+		
+		clickOnTheElement(home.getContactUs());
+		waitForElementVisiblity(contact.getChooseHeading());
+		selectFromDropDown(contact.getChooseHeading(), "2");
+		validationOfText(contact.getChooseHeading().getText(), "customer service");		
+		inputValuesInElement(contact.getOrderReference(), "qwery");
+		inputValuesInElement(contact.getMessage(), "Test");
+		validationOfText(contact.getMessage().getText(),"test");
+		takeScreenShot("Contact Us filled form");
+		clickOnTheElement(contact.getSendButton());
+		
+		
+		
+		driver.quit();
+			
+		}
+		
+		
+		
+		
+	}
+	
+

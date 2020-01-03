@@ -1,0 +1,17 @@
+package com.cucumber.stepdefinition;
+
+public class Hooks {
+
+	@Before
+	private void beforeHook() {
+		// TODO Auto-generated method stub
+
+	}
+	
+	
+	@After
+	private void afterHook() {
+		// TODO Auto-generated method stub
+
+	}
+}

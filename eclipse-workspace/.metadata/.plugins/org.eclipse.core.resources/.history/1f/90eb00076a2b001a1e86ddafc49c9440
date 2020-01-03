@@ -1,0 +1,15 @@
+package com.cucumber.stepdefinition;
+
+import org.openqa.selenium.WebDriver;
+
+import com.cucumber.baseclass.SeleniumBaseClass;
+
+import cucumber.api.java.en.Given;
+
+public class StepdefinitionForAutoPrac extends SeleniumBaseClass {
+	
+	public static WebDriver driver;
+	
+	@Given 
+
+}

@@ -1,0 +1,9 @@
+package com.seleniumDay2;
+
+public class IciciBank {
+
+	public IciciBank() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

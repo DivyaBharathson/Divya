@@ -1,0 +1,12 @@
+package com.Day1.ClassMethodObj;
+
+public class sample {
+	
+	int actualTotalPrice=135, actualPricePerNight=125;
+	if(actualTotalPrice==((actualPricePerNight*3)*(10/100))) {
+		System.out.println("The final amount displayed has 10% tax included");
+	}else {
+		System.out.println("The final amount displayed is not correct");
+	}
+
+}

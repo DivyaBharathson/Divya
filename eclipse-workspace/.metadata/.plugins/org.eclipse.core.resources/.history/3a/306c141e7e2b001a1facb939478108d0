@@ -1,0 +1,5 @@
+Feature: Facebook application automation script
+
+@sce
+Scenario: Verify the user login functionality of the application
+Given User launch the Automation practise application

@@ -1,0 +1,9 @@
+package com.seleniumDay2;
+
+public class RedBusLogin {
+
+	public RedBusLogin() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,11 @@
+
+public class Sample {
+
+	public void Sample1() {
+		System.out.println("First Java Program");
+	}
+public static void main(String[] args) {
+	Sample s = new Sample();
+	s.Sample1();
+}
+}

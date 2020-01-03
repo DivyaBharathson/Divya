@@ -1,0 +1,34 @@
+package com.POM;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class FlipkartPage2POM extends SeleniumBaseClass{
+	
+	@FindBy (xpath="//img[@alt='OPPO A37f (Black, 16 GB)']")
+	private WebElement oppo1;
+	
+
+
+public WebElement getOppo1() {
+		return oppo1;
+	}
+
+
+
+	public void setOppo1(WebElement oppo1) {
+		this.oppo1 = oppo1;
+	}
+
+
+
+public FlipkartPage2POM() {
+		
+		PageFactory.initElements(driver, this);
+	}
+	
+	
+	
+
+}

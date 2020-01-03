@@ -1,0 +1,33 @@
+package com.POM;
+
+public class FlipkartScript extends SeleniumBaseClass{
+
+	public static void main(String[] args) throws Throwable {
+		
+		getDriver("chrome","https://www.flipkart.com/");
+		Thread.sleep(5000);
+		
+		FlipkartPage1POM a=new FlipkartPage1POM();
+		FlipkartPage2POM b=new FlipkartPage2POM();
+		FlipkartPage3POM c=new FlipkartPage3POM();
+		FlipkartPage4POM d=new FlipkartPage4POM();
+		FlipkartPage5POM e=new FlipkartPage5POM();
+		FlipkartPage6POM f=new FlipkartPage6POM();
+		
+		mouseOver(a.getElectronics());
+		Thread.sleep(5000);
+		
+		click(a.getOppo());
+		Thread.sleep(2000);
+		
+		click(b.getOppo1());
+		Thread.sleep(2000);
+		
+		
+		
+		
+		
+	}
+	
+	
+}

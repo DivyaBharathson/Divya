@@ -1,0 +1,28 @@
+package com.selenium.pom;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class AutomationSiteProductPurchasePagePOM extends SeleniumBaseClass{
+
+	@FindBy (id="email")
+	private WebElement emailToSignIn;
+	
+	@FindBy (id="passwd")
+	private WebElement passToSignIn;
+	
+	@FindBy (xpath="//i[@class='icon-lock left']")
+	private WebElement SignIn;
+	
+	@FindBy (xpath="(//li[@class='address_title'])[1]")
+	private WebElement tocheckAddress;
+	
+	@FindBy (xpath="//span[text()='Proceed to checkout']")
+	private WebElement toCheckOut;
+	
+	@FindBy (xpath="//table/tbody/tr/td[3]")
+	private WebElement toCheckDeliveryDetails;
+	
+	
+	
+}

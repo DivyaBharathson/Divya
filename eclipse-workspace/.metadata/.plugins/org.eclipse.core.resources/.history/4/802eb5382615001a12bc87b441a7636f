@@ -1,0 +1,13 @@
+package com.POM;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class Amazon5MobilesPage5POM {
+
+	@FindBy (id="submit.add-to-cart")
+	private WebElement addToCart4;
+	
+	@FindBy (xpath="class=\"currencyINRFallback\"")
+	private WebElement amtPayable4; 
+}

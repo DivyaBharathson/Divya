@@ -1,0 +1,9 @@
+package com.seleniumDay2;
+
+public class GoogleSearch {
+
+	public GoogleSearch() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

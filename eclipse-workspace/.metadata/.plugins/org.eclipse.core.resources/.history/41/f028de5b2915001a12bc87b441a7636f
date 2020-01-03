@@ -1,0 +1,28 @@
+package com.POM;
+
+public class AmazonScript extends SeleniumBaseClass {
+
+		public static void main(String[] args) throws Throwable{
+			
+			getDriver("chrome","https://www.amazon.in/");
+			Thread.sleep(2000);
+			
+			Amazon5MobilesPage1POM a=new Amazon5MobilesPage1POM();
+			Amazon5MobilesPage2POM b=new Amazon5MobilesPage2POM();
+			Amazon5MobilesPage3POM c=new Amazon5MobilesPage3POM();
+			Amazon5MobilesPage4POM d=new Amazon5MobilesPage4POM();
+			Amazon5MobilesPage5POM e=new Amazon5MobilesPage5POM();
+			Amazon5MobilesPage6POM f=new Amazon5MobilesPage6POM();
+			
+			enterText(a.getEnterMobile(), "Mobiles for 5000");
+			click(a.getSearch());
+			Thread.sleep(5000);
+			
+			click(a.getClickPhone1());
+			Thread.sleep(2000);
+
+			click(b.getAddToCart1());
+			Thread.sleep(2000);
+			
+		}
+}

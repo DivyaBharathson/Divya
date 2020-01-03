@@ -1,0 +1,51 @@
+@fb
+Feature: Facebook application automation script
+
+Background: User launch the application
+Given User launch the facebook application
+
+  Scenario: Verify the user username
+    When User enter the username in the username feild
+    And User enter the "sai prasanth" in the username feild
+    
+
+  @tc2
+  Scenario: Verify the user enter password
+    And User enter the password in the password feild
+    
+
+  Scenario: Verify the user click on login button
+    And User click on the login button
+    
+
+  @tc4 @demo
+  Scenario: Verify the forget password funtionality
+    And User click on forget password link
+    
+
+  @tc5 @demo
+  Scenario: Verify the fb logo
+    Then User validate the fb logo present in the page
+    
+
+  @tc6 @demo
+  Scenario: Verify the pagetitle
+    And User validate page title
+    
+
+  @tc5 @demo
+  Scenario: Verify the user click on login button
+    And User click on the login button
+    
+
+  Scenario: Verify the user click on login button
+    And User click on the login button
+    
+
+  Scenario: Verify the user click on login button
+    And User click on the login button
+    
+
+  Scenario: Verify the user click on login button
+    And User click on the login button
+    

@@ -1,0 +1,119 @@
+package com.maven.MavenPractise;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.poi.hssf.record.RightMarginRecord;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+public class FlipkartTestNG extends SeleniumBaseClass {
+
+	@BeforeSuite
+	public void beforeSuite() throws Throwable {
+
+		browserLaunch("chrome");
+		
+	}
+	
+	
+	@Test(enabled=false)
+	public void testCase() throws Throwable {
+		
+		getUrl("https://www.flipkart.com/");
+		WebElement close = driver.findElement(By.xpath("//button[@class='_2AkmmA _29YdH8']"));
+		clickOnTheElement(close);
+
+		WebElement emptySpace = driver.findElement(By.xpath("(//div[@class='_1S7OK2'])[1]"));
+		
+		List<WebElement> menus = driver.findElements(By.xpath("//span[@class='_1QZ6fC _3Lgyp8']"));
+		
+		for (WebElement singleMenu : menus) {
+
+			System.out.println(singleMenu.getText());
+			
+			mouseOver(singleMenu);
+			
+			List<WebElement> subMenus = driver.findElements(By.xpath("(//li[@class='_1KCOnI _2BfSTw _1h5QLb _3ZgIXy'])"));
+			
+			for (WebElement singleSubMenu : subMenus) {
+
+				mouseOver(singleMenu);
+
+				System.out.println("------"+singleSubMenu.getText());
+
+				clickOnTheElement(emptySpace);
+
+			}
+		}
+		driver.close();
+
+	}
+	
+	@Test
+	public void testCase1() throws Throwable {
+		
+		getUrl("https://www.amazon.in/");
+		clickOnTheElement(driver.findElement(By.xpath("//i[@class='hm-icon nav-sprite']")));
+		clickOnTheElement(driver.findElement(By.xpath("//div[contains(text(),'TV, Appliances, Electronics')]")));
+		List<WebElement> electronicsMenu = driver.findElements(By.xpath("(//a[@class='hmenu-item'])//following-sibling::div"));
+		
+		//writing all the electronics menu in Excel
+		
+		List<String> li=new ArrayList<String>();
+		for (WebElement subElectronicsMenu : electronicsMenu) {
+			
+			String textFromMenu = subElectronicsMenu.getText();
+			if (textFromMenu.isEmpty()) {
+				continue;
+			}else
+				li.add(textFromMenu);
+		}
+		for (int i = 0; i <li.size() ; i++) {
+			
+			writeToExcel("Amazon", i, 0, li.get(i));
+			
+		}
+		for (int i = 0; i <li.size() ; i++) {
+		
+			WebElement menu = driver.findElement(By.xpath("//div[contains(text(),'"+li.get(i)+"')]"));
+			waitForElementVisiblity(menu);
+			clickOnTheElement(menu);
+			List<WebElement> brandName = driver.findElements(By.xpath("//div[@class='acs-ln-links']//following-sibling::a"));
+			for (WebElement eachBrand : brandName) {
+				
+				waitForElementVisiblity(eachBrand);
+				clickOnTheElement(eachBrand);
+				Thread.sleep(10000);
+				WebElement product = driver.findElement(By.xpath("(//img[@class='s-access-image cfMarker'])[1]"));
+				rightClickOnElement(product);
+				keyboardMoveOneDown();
+				driver.switchTo().window("1");
+				WebElement product1 = driver.findElement(By.id("productTitle"));
+				writeToExcel(li.get(i), 0, 0, product1.getText().trim());
+				WebElement productPrice = driver.findElement(By.id("priceblock_dealprice"));
+				writeToExcel(li.get(i), 0, 1, productPrice.getText().trim());
+				driver.close();
+				driver.switchTo().window("0");
+				
+			}
+			clickOnTheElement(driver.findElement(By.xpath("//i[@class='hm-icon nav-sprite']")));
+			clickOnTheElement(driver.findElement(By.xpath("//div[contains(text(),'TV, Appliances, Electronics')]")));
+		}
+		
+		
+		
+	}
+
+	@AfterSuite
+	private void afterSuite() {
+		driver.quit();
+
+	}
+}

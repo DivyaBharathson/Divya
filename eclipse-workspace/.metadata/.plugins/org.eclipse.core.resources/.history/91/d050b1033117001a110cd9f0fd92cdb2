@@ -1,0 +1,114 @@
+package com.selenium.pom;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.support.ui.Select;
+
+public class SeleniumBaseClass {
+	
+	public static WebDriver driver;
+	
+	public static WebDriver browserLaunch(String browserName) throws Throwable {
+		try {
+			if (browserName.equalsIgnoreCase("chrome")) {
+				System.setProperty("webdriver.chrome.driver",
+						System.getProperty("user.dir") + "//Drivers//chromedriver.exe");
+				driver = new ChromeDriver();
+			} else if (browserName.equalsIgnoreCase("firefox")) {
+				System.setProperty("webdriver.gecko.driver",
+						System.getProperty("user.dir") + "//Drivers//geckodriver.exe");
+				driver = new FirefoxDriver();
+			} else if (browserName.equalsIgnoreCase("ie")) {
+				System.setProperty("webdriver.ie.driver",
+						System.getProperty("user.dir") + "//Drivers//IEDriverServer.exe");
+				driver = new InternetExplorerDriver();
+			} else {
+				throw new Exception("Invalid browser name");
+			}
+
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+			return driver;
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			throw new Exception("Issue is browser launch");
+		}
+		
+	
+}public static void getUrl(String url) throws Exception {
+	try {
+		driver.get(url);
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+		throw new Exception("URL Is not valid");
+	}
+}
+	public static void inputValuesInElement(WebElement element, String value) {
+		try {
+			element.clear();
+			element.sendKeys(value);
+		} catch (Exception e) {
+			System.out.println("Value couldnt be entered");
+		}
+		
+
+	}
+	
+	public static void waitForElementVisiblity(WebElement element) throws Exception {
+		try {
+			WebDriverWait wb = new WebDriverWait(driver, 50);
+			wb.until(ExpectedConditions.visibilityOf(element));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new Exception();
+		}
+	}
+	
+	public static void clickOnTheElement(WebElement element ) {
+	
+		try {
+			if(element.isDisplayed()&&element.isEnabled()) {
+				element.click();
+			}
+				
+		} catch (Exception e) {
+			
+			System.out.println("Couldnt be click");
+		}
+	
+	}	
+	
+	public static void mouseOver(WebElement element) {
+		
+		try {
+			if(element.isDisplayed()&&element.isEnabled()) {
+			
+				Actions ac=new Actions(driver);
+				ac.moveToElement(element);
+						
+			}
+		} catch (Exception e) {
+			
+			System.out.println("Element is not clicked");
+		}
+		}
+	private void selectFromDropDown(WebElement element,int index) {
+		
+		Select s=new Select(element);
+		s.selectByIndex(index);
+	}
+	
+	
+}
+
+

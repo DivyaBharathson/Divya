@@ -1,0 +1,6 @@
+package com.selenium.pom;
+
+public class AutomationSiteProductListPagePOM extends SeleniumBaseClass{
+	
+
+}

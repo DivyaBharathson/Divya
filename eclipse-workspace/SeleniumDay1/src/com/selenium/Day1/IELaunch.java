@@ -1,0 +1,25 @@
+package com.selenium.Day1;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+
+public class IELaunch {
+
+
+		public static void main(String[] args) throws Throwable {
+			System.setProperty("webdriver.ie.driver", "C:\\Users\\divibharath\\eclipse-workspace\\SeleniumDay1\\Drivers\\IEDriverServer.exe");
+		WebDriver driver=new InternetExplorerDriver();
+		driver.get("http://www.greenstechnologys.com/");
+		Thread.sleep(1000);
+		driver.get("http://demoqa.com/registration/");
+		Thread.sleep(1000);
+		driver.get("http://www.greenstechnologys.com/selenium-course-content.html\r\n" + 
+		"");
+		Thread.sleep(1000);
+		driver.close();
+	
+		
+		}
+		
+
+}

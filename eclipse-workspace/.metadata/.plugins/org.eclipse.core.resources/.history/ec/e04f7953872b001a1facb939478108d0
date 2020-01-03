@@ -1,0 +1,20 @@
+@fb
+Feature: Facebook application automation script
+
+Background: User launch the application
+Given User launch the facebook application
+
+  Scenario Outline: Verify the user username
+    And User enter the "<UserName>" in the username feild
+    And User enter the "<Password>" in the password feild
+    Then User verify the "<UserName>" in the header
+    Examples:
+    |UserName			|Password	|
+    |Divya				|1234			|
+    |Sai prashanth|345567		|
+    |Yuvarani			|234567		|
+    |Sneha				|234567890|
+    |Deepika			|234567		|
+
+Scenario: Test
+When User enter the "([^"]*)" in the username feild

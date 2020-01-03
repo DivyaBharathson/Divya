@@ -1,0 +1,9 @@
+package com.seleniumDay2;
+
+public class FacebookLogin {
+
+	public FacebookLogin() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.seleniumDay2;
+
+public class IvBank {
+
+	public IvBank() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,32 @@
+package com.cucumber.helper;
+
+import com.cucumber.pom.AutomationPracticeSiteHomePOM;
+import com.cucumber.pom.AutomationSiteProductPurchasePOM;
+import com.cucumber.pom.FacebookLoginPOM;
+
+public class POM_Manager {
+	
+	private AutomationPracticeSiteHomePOM homePage;
+	
+	private AutomationSiteProductPurchasePOM purchasePage;
+	
+	private FacebookLoginPOM loginPage;
+
+	public AutomationPracticeSiteHomePOM getHomePage() {
+		if (homePage==null) {
+			homePage = new AutomationPracticeSiteHomePOM();
+		}
+		return homePage;
+	}
+
+	public AutomationSiteProductPurchasePOM getPurchasePage() {
+		return purchasePage;
+	}
+
+	public FacebookLoginPOM getLoginPage() {
+		return loginPage;
+	}
+	
+	
+
+}

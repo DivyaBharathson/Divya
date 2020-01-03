@@ -1,0 +1,9 @@
+package com.cucumber.stepdefinition;
+
+import com.cucumber.baseclass.SeleniumBaseClass;
+
+public class StepdefinitionForAutoPrac extends SeleniumBaseClass {
+	
+	Public
+
+}

@@ -1,0 +1,115 @@
+package com.POM;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+import com.google.common.io.Files;
+
+public class SeleniumBaseClass {
+
+	public static WebDriver driver;
+	public static double x=500000.0;
+	
+	public static WebDriver getDriver(String browser, String url) {
+		if (browser.equalsIgnoreCase("Chrome")) {
+			
+			System.setProperty("webdriver.chrome.driver","C:\\Users\\divibharath\\eclipse-workspace\\Selenium\\Drivers\\chromedriver.exe");
+			 driver=new ChromeDriver();
+			
+			driver.get(url);
+			driver.manage().window().maximize();
+		}
+		else if (browser.equalsIgnoreCase("ie")) {
+			System.setProperty("webdriver.ie.driver", "C:\\Users\\divibharath\\eclipse-workspace\\SeleniumDay1\\Drivers\\IEDriverServer.exe");
+			 driver=new InternetExplorerDriver();
+			driver.get(url);
+			
+		}else if (browser.equalsIgnoreCase("gecko")) {
+			System.setProperty("webdriver.gecko.driver","C:\\Users\\divibharath\\eclipse-workspace\\SeleniumDay1\\Drivers\\geckodriver.exe");
+			 driver=new FirefoxDriver();
+			driver.get(url);
+		}
+		
+		return driver;
+	}
+	
+	//Send Keys
+	public static void enterText(WebElement element,String name) {
+		element.sendKeys(name);
+
+	}
+	
+	//click
+	public static void click(WebElement element) {
+		element.click();
+		
+	}
+	
+	//Drop down
+	public static void dropDown(WebElement element,String value) {
+		
+		Select s=new Select(element);
+		s.selectByValue(value);
+	}
+	
+	//Mouse Over
+	public static void mouseOver(WebElement element) {
+		Actions ac=new Actions(driver);
+		ac.moveToElement(element).build().perform();
+
+	}
+	
+	//Get text and converting to double
+	public static double gettingText(WebElement element) throws Throwable {
+		
+	String StringAmt = element.getText();
+	String replace = StringAmt.replace(",","");
+	String replace2 = replace.replace("₹","");
+	double doubleAmt=Double.parseDouble(replace2);
+	return doubleAmt;
+	
+	}
+	
+	//Scroll Window
+	
+	public static void scrollWindow () {
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		js.executeScript("arguments[0].scrollIntoView();", element);
+		js.executeScript("window.scrollBy(167,750)");
+	}
+	
+	//window Handles
+	
+	public static void WindowsHandling(WebDriver driver,int index) {
+		
+		Set<String> x = driver.getWindowHandles();
+		List<String> l=new ArrayList<>(x);
+		driver.switchTo().window(l.get(index));
+
+	}
+	//Take Screenshot
+	
+	public static void screenshot(String name) throws Exception {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		File Desti = new File("C:\\Users\\divibharath\\eclipse-workspace\\Selenium\\FileScreenshot\\"+name+".png");
+		FileUtils.copyFile(source, Desti);
+	}
+}                    
+

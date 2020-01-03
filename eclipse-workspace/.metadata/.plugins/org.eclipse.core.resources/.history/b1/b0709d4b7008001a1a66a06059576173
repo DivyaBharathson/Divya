@@ -1,0 +1,9 @@
+package org.tamil;
+
+public class Tamil {
+
+	public Tamil() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

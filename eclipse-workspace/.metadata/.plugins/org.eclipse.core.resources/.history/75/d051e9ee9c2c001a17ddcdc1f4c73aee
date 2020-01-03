@@ -1,0 +1,348 @@
+package com.cucumber.stepdefinition;
+
+import org.openqa.selenium.WebDriver;
+
+import com.cucumber.baseclass.SeleniumBaseClass;
+import com.cucumber.helper.POM_Manager;
+import com.cucumber.pom.AdactinHomePagePom;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class StepdefinitionAdactin extends SeleniumBaseClass {
+	
+	
+	public static POM_Manager po = new POM_Manager();
+
+	@Given("^User launch Adactin web page$")
+	public void user_launch_Adactin_web_page() throws Throwable {
+	    
+		browserLaunch("chrome");
+		getUrl("https://www.adactin.com/HotelApp/index.php");
+	    
+	}
+
+	@When("^User enter email id in username field$")
+	public void user_enter_email_id_in_username_field() throws Throwable {
+	    
+		inputValuesInElement(po.getHomePage().getUserNameField(), "DivyaBharathson");
+	    
+	}
+
+	@When("^User enter password in password field$")
+	public void user_enter_password_in_password_field() throws Throwable {
+	    inputValuesInElement(po.getHomePage().getPassNameField(), "qwerty");
+	    
+	}
+
+	@When("^User click login button$")
+	public void user_click_login_button() throws Throwable {
+	    clickOnTheElement(po.getHomePage().getLoginButton());
+	    
+	}
+
+	@When("^User select Location$")
+	public void user_select_Location() throws Throwable {
+	    selectFromDropDownUsingValue(po.getBookingPage().getLocation(), "Sydney");
+	    
+	}
+
+	@When("^User select Hotel$")
+	public void user_select_Hotel() throws Throwable {
+	    
+	    selectFromDropDownUsingValue(po.getBookingPage().getHotel(), "Hotel Creek");
+	}
+
+	@When("^User select Room type$")
+	public void user_select_Room_type() throws Throwable {
+	    
+	    selectFromDropDownUsingValue(po.getBookingPage().getRoomType(), "Standard");
+	}
+
+	@When("^User select number of rooms$")
+	public void user_select_number_of_rooms() throws Throwable {
+	    
+		selectFromDropDownUsingValue(po.getBookingPage().getRoomNums(), "1");
+	    
+	}
+
+	@When("^User select check-in date$")
+	public void user_select_check_in_date() throws Throwable {
+	    
+	    inputValuesInElement(po.getBookingPage().getCheckInDate(), "02/01/2020");
+	    
+	    
+	}
+	@When("^USer select check-out date$")
+	public void user_select_check_out_date() throws Throwable {
+	    inputValuesInElement(po.getBookingPage().getCheckOutDate(), "03/01/2020");
+	}
+
+
+	@When("^User select check-out date earlier than check-in date$")
+	public void user_select_check_out_date_earlier_than_check_in_date() throws Throwable {
+	    
+		inputValuesInElement(po.getBookingPage().getCheckOutDate(), "05/01/2020");
+	    
+	}
+
+	@When("^User specifies number of Adults per room$")
+	public void user_specifies_number_of_Adults_per_room() throws Throwable {
+	    
+	    selectFromDropDownUsingValue(po.getBookingPage().getAdultsPerRoom(), "2");
+	}
+
+	@When("^User clicks search button$")
+	public void user_clicks_search_button() throws Throwable {
+	    
+	    clickOnTheElement(po.getBookingPage().getSearchButton());
+	}
+
+	@Then("^User should get an error message that check-out date is earlier than check-in date$")
+	public void user_should_get_an_error_message_that_check_out_date_is_earlier_than_check_in_date() throws Throwable {
+	    
+		System.out.println(po.getBookingPage().getErrorMessage().getText());
+		System.out.println("The system throws above error");
+	    
+	}
+	
+	@When("^User select check-out date using different format$")
+	public void user_select_check_out_date_using_different_format() throws Throwable {
+		
+		inputValuesInElement(po.getBookingPage().getCheckOutDate(), "2020/01/07");
+	}
+
+	@Then("^Check if system throws date format error message$")
+	public void check_if_system_throws_date_format_error_message() throws Throwable {
+	    
+		String text = po.getBookingPage().getErrorMessage().getText();
+		if (text.isEmpty()) {
+			System.out.println("It accepts any data format");
+		}else {
+		
+			System.out.println(""+text+" is thrown if you give a different date format");
+	}}
+	
+	@When("^User checks if the hotel name displayed is the same as choosen by user in previous page$")
+	public void user_checks_if_the_hotel_name_displayed_is_the_same_as_choosen_by_user_in_previous_page() throws Throwable {
+	    
+		if (po.getDetailsToVerify().getVerifyHotelName().getAttribute("value").equalsIgnoreCase("Hotel Creek")) {
+			System.out.println("Hotel selected correctly");
+		}else {
+			System.out.println("Hotel is not selected correctly");
+		}
+	    
+	}
+
+	@When("^User checks if the location displayed is the same as choosen by user in previous page$")
+	public void user_checks_if_the_location_displayed_is_the_same_as_choosen_by_user_in_previous_page() throws Throwable {
+	    
+		if (po.getDetailsToVerify().getVerifyHotelLocation().getAttribute("value").equalsIgnoreCase("Sydney")) {
+			System.out.println("Location selected correctly");
+		}else {
+			System.out.println("Location is not selected correctly");
+		}
+	    
+	}
+
+	@When("^User checks if the number of rooms displayed is the same as choosen by user in previous page$")
+	public void user_checks_if_the_number_of_rooms_displayed_is_the_same_as_choosen_by_user_in_previous_page() throws Throwable {
+	    
+		if (po.getDetailsToVerify().getVerifyNoOfRooms().getAttribute("value").equalsIgnoreCase("1 Rooms")) {
+			System.out.println("No of rooms selected correctly");
+		}else {
+			System.out.println("No of rooms are not selected correctly");
+		}
+	    
+	}
+
+	@When("^User checks if the Arrival date displayed is the same as choosen by user in previous page$")
+	public void user_checks_if_the_Arrival_date_displayed_is_the_same_as_choosen_by_user_in_previous_page() throws Throwable {
+	    
+		if (po.getDetailsToVerify().getVerifyArrivalDate().getAttribute("value").equalsIgnoreCase("02/01/2020")) {
+			System.out.println("Arrival date selected correctly");
+		}else {
+			System.out.println("Arrival date is not selected correctly");
+		}
+	}
+
+	@When("^User checks if the Departure date displayed is the same as choosen by user in previous page$")
+	public void user_checks_if_the_Departure_date_displayed_is_the_same_as_choosen_by_user_in_previous_page() throws Throwable {
+	    
+		if (po.getDetailsToVerify().getVerifyDepartureDate().getAttribute("value").equalsIgnoreCase("03/01/2020")) {
+			System.out.println("Departure date selected correctly");
+		}else {
+			System.out.println("Departure date is not selected correctly");
+		}
+	    
+	}
+
+	@When("^User checks if the number of days displayed is the same as choosen by user in previous page$")
+	public void user_checks_if_the_number_of_days_displayed_is_the_same_as_choosen_by_user_in_previous_page() throws Throwable {
+	    
+		if (po.getDetailsToVerify().getVerifyRoomNum().getAttribute("value").equalsIgnoreCase("1 Days")) {
+			System.out.println("Days selected correctly");
+		}else {
+			System.out.println("Days not selected correctly");
+		}
+	    
+	}
+
+	@When("^User checks if the Room Type displayed is the same as choosen by user in previous page$")
+	public void user_checks_if_the_Room_Type_displayed_is_the_same_as_choosen_by_user_in_previous_page() throws Throwable {
+	    
+		if (po.getDetailsToVerify().getVerifyRoomType().getAttribute("value").equalsIgnoreCase("standard")) {
+			System.out.println("Room type selected correctly");
+		}else {
+			System.out.println("Room type is not selected correctly");
+		}	
+	    
+	}
+
+	@When("^User checks if the Total price displayed is correct to the price per night specified by the website$")
+	public void user_checks_if_the_Total_price_displayed_is_correct_to_the_price_per_night_specified_by_the_website() throws Throwable {
+	    
+	    String pricePerNight = po.getDetailsToVerify().getVerifyPricePerNight().getAttribute("value");
+	    String replace = pricePerNight.replace("AUD","");
+	    String pricePN = replace.replace("$","").trim();
+	    int actualPricePerNight = Integer.parseInt(pricePN);
+	    System.out.println("Price per night displayed is $"+actualPricePerNight);
+	    
+	    String TotalPrice = po.getDetailsToVerify().getVerifyTotalPrice().getAttribute("value");
+		String replace2 = TotalPrice.replace("AUD", "");
+		String totalPrice = replace2.replace("$", "").trim();
+		int actualTotalPrice = Integer.parseInt(totalPrice);
+		System.out.println("Total amount displayed is $"+actualTotalPrice);
+		
+		if(actualTotalPrice==((actualPricePerNight+10))) {
+			System.out.println("The final amount displayed has $10 tax included");
+		}else {
+			System.out.println("The final amount displayed is not correct");
+		}
+		 
+			
+		
+	}
+	
+	
+	
+	@When("^User clicks the radio button accepting hte selected the details$")
+	public void user_clicks_the_radio_button_accepting_hte_selected_the_details() throws Throwable {
+		Thread.sleep(3000);
+	    clickOnTheElement(po.getDetailsToVerify().getRadioButton());
+	    
+	}
+
+	@When("^User clicks the continue button to continue to Payment Page$")
+	public void user_clicks_the_continue_button_to_continue_to_Payment_Page() throws Throwable {
+	    clickOnTheElement(po.getDetailsToVerify().getContinueButton());
+	    
+	}
+
+	@When("^User enters first name$")
+	public void user_enters_first_name() throws Throwable {
+	    inputValuesInElement(po.getPaymentPage().getFirstName(), "Divya");
+	    
+	}
+
+	@When("^User enters Second name$")
+	public void user_enters_Second_name() throws Throwable {
+	    inputValuesInElement(po.getPaymentPage().getLastName(), "Bharath");
+	    
+	}
+
+	@When("^User enters billing address$")
+	public void user_enters_billing_address() throws Throwable {
+	    inputValuesInElement(po.getPaymentPage().getAddress(), "qazwsxedcrfvtgbyhnujm");
+	    
+	}
+
+	@Then("^User enters credit card number of (\\d+) digits$")
+	public void user_enters_credit_card_number_of_digits(int arg1) throws Throwable {
+	    
+	    inputValuesInElement(po.getPaymentPage().getCardNum(), "1234567891234567");
+	}
+
+	@Then("^User selects the card type$")
+	public void user_selects_the_card_type() throws Throwable {
+	    
+	    selectFromDropDownUsingValue(po.getPaymentPage().getCardType(), "VISA");
+	}
+
+	@Then("^User selects expiry month of the card$")
+	public void user_selects_expiry_month_of_the_card() throws Throwable {
+	    
+	    selectFromDropDownUsingValue(po.getPaymentPage().getExpMonth(), "2");
+	}
+
+	@Then("^User selects expiry year of the card$")
+	public void user_selects_expiry_year_of_the_card() throws Throwable {
+	    selectFromDropDownUsingValue(po.getPaymentPage().getExpYear(), "2020");
+	    
+	}
+
+	@Then("^User enters CVV number of the card$")
+	public void user_enters_CVV_number_of_the_card() throws Throwable {
+	    
+	    inputValuesInElement(po.getPaymentPage().getCVVNum(), "123");
+	}
+
+	@Then("^User clicks book now button$")
+	public void user_clicks_book_now_button() throws Throwable {
+	    
+	    clickOnTheElement(po.getPaymentPage().getBookNow());
+	}
+
+	@Then("^User checks if order number generated$")
+	public void user_checks_if_order_number_generated() throws Throwable {
+		String orderNum = po.getPaymentPage().getOrderNum().getAttribute("value");
+	    System.out.println("The order number generated is :"+orderNum);
+	}
+
+	@Then("^User logs out of the application$")
+	public void user_logs_out_of_the_application() throws Throwable {
+	    clickOnTheElement(po.getPaymentPage().getLogOut());
+	    
+	}
+	
+	@Given("^User clicks on My Itinerary button below the Order ID$")
+	public void user_clicks_on_My_Itinerary_button_below_the_Order_ID() throws Throwable {
+	    clickOnTheElement(po.getPaymentPage().getMyItineraryButton());
+		
+	}
+
+	@Then("^User tries to edit order number displayed on the page$")
+	public void user_tries_to_edit_order_number_displayed_on_the_page() throws Throwable {
+		po.getItineraryPage().getFirstDisplayedOrderId().clear();
+		if (po.getItineraryPage().getFirstDisplayedOrderId().getAttribute("value").isEmpty()) {
+			System.out.println("The Itinerary is editable");
+		}else {
+			System.out.println("The Itinerary is not editable");
+		}
+	}
+	
+	@Then("^User search OrderID in the search bar$")
+	public void user_search_OrderID_in_the_search_bar() throws Throwable {
+	    inputValuesInElement(po.getItineraryPage().getOrderIdSearchBox(),"15085648DT" );
+	}
+	
+	@Then("^User click the Go button$")
+	public void user_click_the_Go_button() throws Throwable {
+	    	
+		
+	}
+
+	@Then("^User check if the mentioned order id is displayed in the order id space$")
+	public void user_check_if_the_mentioned_order_id_is_displayed_in_the_order_id_space() throws Throwable {
+	    
+	}
+
+
+	@Then("^User closes the browser$")
+	public void user_closes_the_browser() throws Throwable {
+	    driver.quit();
+	    
+	}
+	}
+

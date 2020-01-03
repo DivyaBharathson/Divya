@@ -1,0 +1,68 @@
+package com.selenium.Day5;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class ShopcluesMouseOver2 {
+	
+	public static void main(String[] args) throws Throwable {
+		
+		//Ran successfully
+		
+	
+	System.setProperty("webdriver.chrome.driver","C:\\Users\\divibharath\\eclipse-workspace\\Selenium\\Drivers\\chromedriver.exe");
+	WebDriver driver=new ChromeDriver();
+	
+	driver.get("https://www.shopclues.com/wholesale.html");
+	String fid = driver.getWindowHandle();
+	driver.manage().window().maximize();
+	Thread.sleep(5000);
+	
+	WebElement sports = driver.findElement(By.xpath("//a[text()='Sports & More']"));
+	
+	Actions a=new Actions(driver);
+	a.moveToElement(sports).build().perform();
+	Thread.sleep(2000);
+	
+	WebElement weight = driver.findElement(By.xpath("//a[text()='Weight Gainers']"));
+	weight.click();
+	Thread.sleep(2000);
+	
+	Set<String> windowHandles = driver.getWindowHandles();
+	List<String> li=new ArrayList<String>();
+	li.addAll(windowHandles);
+	
+	driver.switchTo().window(li.get(1));
+	WebElement firstItem = driver.findElement(By.xpath("//img[@title='Medisys Double Mass Gainer -Chocolate 1.5kg Free Multivitamin']"));
+	firstItem.click();
+	
+	Set<String> windowHandles2 = driver.getWindowHandles();
+	li.addAll(windowHandles2);
+	
+	driver.switchTo().window(li.get(4));
+	WebElement addToCart = driver.findElement(By.xpath("//button[@id='add_cart']"));
+	addToCart.click();
+	
+	WebElement cart = driver.findElement(By.xpath("//a[@class='cart_ic']"));
+	cart.click();
+	Thread.sleep(2000);
+	
+	WebElement cost = driver.findElement(By.xpath("//div[@class='p_price']"));
+	System.out.println("The cost of item added to cart is "+cost.getText());
+	
+	Thread.sleep(2000);
+	driver.quit();
+		
+	
+	
+	
+}
+}

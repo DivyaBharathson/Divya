@@ -1,0 +1,75 @@
+package com.cucumber.stepdefinition;
+
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+
+import com.cucumber.baseclass.SeleniumBaseClass;
+import com.cucumber.pom.AutomationPracticeSiteHomePOM;
+import com.cucumber.pom.AutomationSiteProductPurchasePOM;
+import com.cucumber.pom.FacebookLoginPOM;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class StepdefinitionForAutoPrac extends SeleniumBaseClass {
+	
+	public static WebDriver driver;
+	
+	
+	@Given("^User launch the Automation practise application$")
+	public void user_launch_the_Automation_practise_application() throws Throwable {
+		driver = browserLaunch("chrome");
+		getUrl("http://automationpractice.com/index.php");
+	}
+
+	@When("^User enter the username in the username field$")
+	public void user_enter_the_username_in_the_username_field() throws Throwable {
+		AutomationSiteProductPurchasePOM ap=new AutomationSiteProductPurchasePOM();
+		inputValuesInElement(ap.getEmailToSignIn(), "test@gmail.com");
+	}
+
+	@When("^User enter the password in the password field$")
+	public void user_enter_the_password_in_the_password_field() throws Throwable {
+		AutomationSiteProductPurchasePOM ap=new AutomationSiteProductPurchasePOM();
+		inputValuesInElement(ap.getPassToSignIn(), "2345tgfdsdf");
+	}
+
+	@When("^User click on the login button$")
+	public void user_click_on_the_login_button() throws Throwable {
+		AutomationSiteProductPurchasePOM ap=new AutomationSiteProductPurchasePOM();
+		clickOnTheElement(ap.getSignIn());
+	}
+
+	@Then("^User validate the username present in the header$")
+	public void user_validate_the_username_present_in_the_header() throws Throwable {
+
+	}
+
+	@Then("^User close the browser$")
+	public void user_close_the_browser() throws Throwable {
+		driver.quit();
+	}
+
+	@Then("^User validate the fb logo present in the page$")
+	public void user_validate_the_fb_logo_present_in_the_page() throws Throwable {
+
+		FacebookLoginPOM fb = new FacebookLoginPOM();
+		Assert.assertTrue(fb.getGotoFB().isDisplayed());
+	}
+
+	@Then("^User validate page title$")
+	public void user_validate_page_title() throws Throwable {
+
+		Assert.assertEquals("Facebook – log in or sign up", driver.getTitle());
+	}
+
+	@Then("^User click on forget password link$")
+	public void user_click_on_forget_password_link() throws Throwable {
+		FacebookLoginPOM fb = new FacebookLoginPOM();
+		clickOnTheElement(fb.getForgetAcc());
+	}
+}
+
+
+}

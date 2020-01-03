@@ -1,0 +1,13 @@
+package com.selenium.Day5;
+
+public class GettyImages {
+
+	public static void main(String[] args) {
+		
+		System.setProperty("webdriver.chrome.driver", arg1)
+		
+		
+	}
+	
+	
+}

@@ -1,0 +1,33 @@
+@fb
+Feature: Facebook application automation script
+
+Scenario: Verify the user username
+Given User launch the facebook application
+When User enter the username in the username feild
+And User close the browser
+
+Scenario: Verify the user enter password
+Given User launch the facebook application
+And User enter the password in the password feild
+And User close the browser
+
+Scenario: Verify the user click on login button
+Given User launch the facebook application
+And User click on the login button
+And User close the browser
+
+Scenario: Verify the forget password funtionality
+Given User launch the facebook application
+And User click on forget password link
+And User close the browser
+
+Scenario: Verify the fb logo
+Given User launch the facebook application
+Then User validate the fb logo present in the page
+And User close the browser
+
+
+Scenario: Verify the pagetitle
+Given User launch the facebook application
+And User validate page title 
+And User close the browser

@@ -1,0 +1,134 @@
+package com.maven.MavenPractise;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class AdactinBookingPaymentDetailsPOM extends SeleniumBaseClass {
+	
+	@FindBy (id="first_name")
+	private WebElement firstName;
+	
+	@FindBy (id="last_name")
+	private WebElement lastName;
+	
+	@FindBy (id="address")
+	private WebElement address; 
+	
+	@FindBy (id="cc_num")
+	private WebElement cardNum;
+	
+	@FindBy (id="cc_type")
+	private WebElement cardType;
+	
+	@FindBy (id="cc_exp_month")
+	private WebElement expMonth;
+	
+	@FindBy (id="cc_exp_year")
+	private WebElement expYear;
+	
+	@FindBy (id="cc_cvv")
+	private WebElement CVVNum;
+	
+	@FindBy (id="book_now")
+	private WebElement bookNow;
+	
+	@FindBy (id="order_no")
+	private WebElement orderNum;
+	
+	@FindBy (id="logout")
+	private WebElement logOut;
+	
+	public WebElement getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(WebElement firstName) {
+		this.firstName = firstName;
+	}
+
+	public WebElement getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(WebElement lastName) {
+		this.lastName = lastName;
+	}
+
+	public WebElement getAddress() {
+		return address;
+	}
+
+	public void setAddress(WebElement address) {
+		this.address = address;
+	}
+
+	public WebElement getCardNum() {
+		return cardNum;
+	}
+
+	public void setCardNum(WebElement cardNum) {
+		this.cardNum = cardNum;
+	}
+
+	public WebElement getCardType() {
+		return cardType;
+	}
+
+	public void setCardType(WebElement cardType) {
+		this.cardType = cardType;
+	}
+
+	public WebElement getExpMonth() {
+		return expMonth;
+	}
+
+	public void setExpMonth(WebElement expMonth) {
+		this.expMonth = expMonth;
+	}
+
+	public WebElement getExpYear() {
+		return expYear;
+	}
+
+	public void setExpYear(WebElement expYear) {
+		this.expYear = expYear;
+	}
+
+	public WebElement getCVVNum() {
+		return CVVNum;
+	}
+
+	public void setCVVNum(WebElement cVVNum) {
+		CVVNum = cVVNum;
+	}
+
+	public WebElement getBookNow() {
+		return bookNow;
+	}
+
+	public void setBookNow(WebElement bookNow) {
+		this.bookNow = bookNow;
+	}
+
+	public WebElement getOrderNum() {
+		return orderNum;
+	}
+
+	public void setOrderNum(WebElement orderNum) {
+		this.orderNum = orderNum;
+	}
+
+	public WebElement getLogOut() {
+		return logOut;
+	}
+
+	public void setLogOut(WebElement logOut) {
+		this.logOut = logOut;
+	}
+
+	public AdactinBookingPaymentDetailsPOM() {
+		PageFactory.initElements(driver,this);
+	}
+
+}

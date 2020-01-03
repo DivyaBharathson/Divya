@@ -1,0 +1,19 @@
+package com.cucumber.helper;
+
+import com.cucumber.pom.AdactinBookingPOM;
+import com.cucumber.pom.AdactinHomePagePom;
+
+
+public class POM_Manager {
+	
+	private AdactinHomePagePom homePage;
+	private AdactinBookingPOM bookingPage;
+	
+	public AdactinHomePagePom getHomePage() {
+		if (homePage==null) {
+			homePage = new AdactinHomePagePom();
+		}
+		return homePage;
+	}
+
+}

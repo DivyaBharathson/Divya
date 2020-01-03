@@ -1,0 +1,10 @@
+@Test
+Feature: Automation Practise Login
+
+Given User launch the Automation practise application
+When User click on the SignIn button
+And User enter the username in the username field
+And User enter the password in the password field
+And User click the login button
+Then User validate logged in or not
+And User close the browser

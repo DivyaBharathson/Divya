@@ -1,0 +1,25 @@
+package com.POM;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Amazon5MobilesPage2POM extends SeleniumBaseClass {
+
+	@FindBy (id="submit.add-to-cart")
+	private WebElement addToCart1;
+
+	public WebElement getAddToCart1() {
+		return addToCart1;
+	}
+
+	public void setAddToCart1(WebElement addToCart1) {
+		this.addToCart1 = addToCart1;
+	}
+	
+	public Amazon5MobilesPage2POM() {
+		PageFactory.initElements(driver,this);
+	}
+	
+	
+}

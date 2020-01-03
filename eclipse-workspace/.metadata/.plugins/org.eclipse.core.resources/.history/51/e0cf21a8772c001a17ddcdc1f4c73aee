@@ -1,0 +1,58 @@
+Feature: Adactin Tasks
+
+Scenario: Task 1 -Login
+
+Given User launch Adactin web page
+When User enter email id in username field
+And User enter password in password field
+And User click login button
+
+@Ignore
+Scenario: Task 2 - Date Error Message
+
+When User select Location
+And User select Hotel
+And User select Room type
+And User select number of rooms
+And User select check-in date
+And User select check-out date earlier than check-in date
+And User specifies number of Adults per room
+And User clicks search button
+Then User should get an error message that check-out date is earlier than check-in date
+And User closes the browser
+
+@Ignore
+Scenario: Task 3 - Date format error Message
+
+When User select Location
+And User select Hotel
+And User select Room type
+And User select number of rooms
+And User select check-in date
+And User select check-out date using different format
+Then Check if system throws date format error message
+And User specifies number of Adults per room
+And User clicks search button
+ 
+
+Scenario: Tasks 5,6,7,8 - To Check whether all the selected details match with the details choosen
+
+When User select Location
+And User select Hotel
+And User select Room type
+And User select number of rooms
+And User select check-in date
+And USer select check-out date
+And User specifies number of Adults per room
+And User clicks search button
+
+When User checks if the hotel name displayed is the same as choosen by user in previous page
+And User checks if the location displayed is the same as choosen by user in previous page
+And User checks if the number of rooms displayed is the same as choosen by user in previous page
+And User checks if the Arrival date displayed is the same as choosen by user in previous page
+And  User checks if the Departure date displayed is the same as choosen by user in previous page
+And  User checks if the number of days displayed is the same as choosen by user in previous page
+And  User checks if the Room Type displayed is the same as choosen by user in previous page
+And  User checks if the price per night displayed is the same as choosen by user in previous page
+And  User checks if the Total price displayed is correct to the price per night specified by the website
+Then User closes the browser

@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.cucumber.testrunner.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 2, Skipped: 4, Time elapsed: 22.528 s <<< FAILURE! - in com.cucumber.testrunner.TestRunner
+Scenario: Task 1 -Login.Then Check page title relevance - Login Page  Time elapsed: 0.01 s  <<< ERROR!
+java.lang.Exception: Page title not in refernce to Hotel Reservation
+
+Scenario: Task 1 -Login  Time elapsed: 0.01 s  <<< ERROR!
+java.lang.Exception: Page title not in refernce to Hotel Reservation
+

@@ -1,0 +1,9 @@
+package com.seleniumDay2;
+
+public class TwitterLogin {
+
+	public TwitterLogin() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

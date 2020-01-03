@@ -1,0 +1,45 @@
+package com.cucumber.helper;
+
+import com.cucumber.pom.AdactinBookingDetailsVerifyToContinuePOM;
+import com.cucumber.pom.AdactinBookingPOM;
+import com.cucumber.pom.AdactinBookingPaymentDetailsPOM;
+import com.cucumber.pom.AdactinHomePagePom;
+
+
+public class POM_Manager {
+	
+	private AdactinHomePagePom homePage;
+	private AdactinBookingPOM bookingPage;
+	private AdactinBookingDetailsVerifyToContinuePOM verifyPage;
+	private AdactinBookingPaymentDetailsPOM paymentPage; 
+	
+	public AdactinHomePagePom getHomePage() {
+		if (homePage==null) {
+			homePage = new AdactinHomePagePom();
+		}
+		return homePage;
+	}
+	public AdactinBookingPOM getBookingPage() {
+		if (bookingPage==null) {
+			bookingPage = new AdactinBookingPOM();
+		}
+		return bookingPage;
+		
+	}
+	public AdactinBookingDetailsVerifyToContinuePOM getDetailsToVerify() {
+		if (verifyPage==null) {
+			verifyPage = new AdactinBookingDetailsVerifyToContinuePOM();
+		}
+		return verifyPage;
+		
+
+	}
+	public AdactinBookingPaymentDetailsPOM getPaymentPage() {
+		if (paymentPage==null) {
+			paymentPage = new AdactinBookingPaymentDetailsPOM();
+		}
+		
+		return paymentPage;
+	}
+	
+}

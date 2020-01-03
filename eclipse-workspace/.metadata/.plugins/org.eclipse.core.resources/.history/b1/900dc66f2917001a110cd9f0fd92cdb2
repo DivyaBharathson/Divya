@@ -1,0 +1,28 @@
+package com.selenium.pom;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class AutomationSiteHomePagePOM extends SeleniumBaseClass {
+	
+	@FindBy (xpath="//a[@title='Log in to your customer account']")
+	private WebElement signIn;
+	
+	@FindBy (id="search_query_top")
+	private WebElement search;
+	
+	@FindBy (xpath="//button[@name='submit_search']")
+	private WebElement searchButton;
+	
+	@FindBy (xpath="//a[@title='Women']")
+	private WebElement womenMenu;
+	
+	@FindBy (xpath="//a[@title='Blouses']")
+	private WebElement blousesSubMenu;
+	
+	public AutomationSiteHomePagePOM() {
+		PageFactory.initElements(driver, this);
+	}
+
+}

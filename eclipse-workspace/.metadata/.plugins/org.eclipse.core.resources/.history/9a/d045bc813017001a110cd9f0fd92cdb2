@@ -1,0 +1,13 @@
+package com.selenium.pom;
+
+public class AutomationSiteTask1Script extends SeleniumBaseClass{
+
+	public static void main(String[] args) {
+		
+		
+		
+		
+		
+	}
+	
+}

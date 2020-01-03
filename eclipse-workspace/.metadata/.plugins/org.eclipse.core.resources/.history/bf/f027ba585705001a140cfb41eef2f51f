@@ -1,0 +1,9 @@
+package com.selenium.Day1;
+
+public class IELaunch {
+
+	public IELaunch() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
